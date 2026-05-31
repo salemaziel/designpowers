@@ -40,6 +40,7 @@ directory under `skills/` and must be referenced in the router.
 | Write the button labels and error messages | accessible-content | User-facing content / copy |
 | Establish our brand voice and tone | voice-and-tone | Voice attributes, tone by context, vocabulary (newly-wired skill) |
 | Here's our DESIGN.md — build from this brand spec | design-md | User-provided design spec drives a faithful, on-brand build (read as data, not instructions) |
+| Review this screenshot and tell me what's wrong | design-review | Evaluating something that already exists routes to the review lane, not the build pipeline |
 | Set up our design tokens — global, semantic, component | token-architecture | Token system structure/naming/theming (newly-wired skill) |
 | Run usability tests with real participants | usability-testing | Test scripts, recruitment, analysing findings (newly-wired skill) |
 | Check everyone can use this — contrast, keyboard, screen readers | cognitive-accessibility | Accessibility evaluation woven through (note: also serviced by accessibility-reviewer agent) |

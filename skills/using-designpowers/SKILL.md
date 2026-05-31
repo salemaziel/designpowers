@@ -91,9 +91,30 @@ If the user does not choose, default to "I'm ready to go."
 
 Returning users skip this step entirely — they've seen it.
 
-### Step 4: Ask What to Design
+### Step 4: Build or Review?
 
-Ask the user what they want to build. Keep it conversational:
+Designpowers has two lanes. Figure out which one the user wants before routing:
+
+- **Build** — design something new, from a blank page. Runs the full pipeline (discovery → … → ship).
+- **Review** — evaluate something that already exists (a screenshot, URL, or code). Runs the critique-only lane via `design-review`.
+
+Usually the user's first message already tells you. If they describe something they want to make ("I'm designing onboarding for…"), that's Build. If they share or point at something that exists ("review this", "what's wrong with this screen", a URL, a screenshot), that's Review. Route accordingly without asking.
+
+**If it's genuinely ambiguous**, ask one question — don't guess:
+
+```
+  Two ways I can help:
+
+  ► Design something new — I'll run the full team
+    from discovery to handoff.
+  ► Review something you already have — share a
+    screenshot, URL, or code and the reviewers
+    will audit it.
+
+  Which fits?
+```
+
+**If Build**, ask what they want to make. Keep it conversational:
 
 ```
   What are we designing?
@@ -104,6 +125,8 @@ Ask the user what they want to build. Keep it conversational:
 ```
 
 Use AskUserQuestion with a free-text prompt. Do NOT proceed to any skill or agent until the user has described what they want to build.
+
+**If Review**, invoke the `design-review` skill. It captures a lightweight inferred brief and runs the three reviewers in parallel — it does **not** run discovery, strategy, or build. Do NOT funnel a review request into the full build pipeline.
 
 ### Step 5: Start in Direct Mode (Explain Later)
 
@@ -314,6 +337,7 @@ Before responding to ANY message — including clarifying questions — check wh
 | Taste Check | `taste-feedback` | During build phase — shows intermediate visual output for mid-flight taste correction |
 | Heuristic | `heuristic-evaluator` (agent) | After build — dispatch the heuristic-evaluator agent for Nielsen's 10 + cognitive walkthrough, in parallel with critic and accessibility-reviewer |
 | Critique | `designpowers-critique` | When reviewing design work against the plan |
+| Review lane | `design-review` | When the user wants to evaluate something that ALREADY EXISTS (screenshot, URL, code) — runs the reviewers in parallel and reconciles, without the build pipeline |
 | Synthetic Test | `synthetic-user-testing` | After fix round — walks through key tasks as each persona to validate the design works for real people in real conditions |
 | Usability Test | `usability-testing` | When planning or conducting tests with real participants — test scripts, tasks, recruitment, analysing findings into design actions |
 | Debt | `design-debt-tracker` | After reviews produce deferred findings, at project start to review accumulated debt, or when deciding what to fix next |
@@ -340,6 +364,7 @@ Accessibility is not a separate step. It is present in every skill. When working
 | Red Flag | What To Do |
 |----------|-----------|
 | About to write UI code without design-discovery | STOP. Invoke design-discovery first |
+| User shared something that already exists and asked to review/audit it | STOP. Invoke `design-review`, not the build pipeline. Don't run discovery on work that's already built |
 | About to make visual design decisions without a taste profile | PAUSE. Ask if the user wants to run taste calibration. Not mandatory, but the design will be stronger with one |
 | About to apply the design record to steer a project | STOP. The design record (`design-memory`) is observational only — never feed it into the pipeline as preferences. This project's direction comes from the brief, `design-taste`, and any `DESIGN.md` |
 | Design direction is uncertain with multiple viable options | PAUSE. Invoke design-debate before committing |
