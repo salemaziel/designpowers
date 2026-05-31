@@ -141,16 +141,14 @@ After refinement, update the inspiration brief with what resonated and pass it t
 
 ## Integration With Taste Profile
 
-If a taste profile exists (`design-memory`):
+Inspiration is driven by **this project's** direction — the brief and the live taste calibration from `design-taste` — not by the cross-project design record. The `design-memory` record is observational and is **not** used to pre-filter or steer references; doing so would silently apply one project's habits to another. (If the user themselves says "I usually avoid gradients," that's live direction for this project — honour it because they said it now, not because a record predicted it.)
 
-1. **Pre-filter** — do not include references that match known anti-patterns unless you're deliberately challenging a pattern ("I know you usually avoid X, but this example does it in a way that might change your mind")
-2. **Highlight alignment** — when a reference matches a strong opinion, note it: "This matches your preference for generous whitespace"
-3. **Test soft patterns** — use inspiration reactions to confirm or reject soft patterns in the taste profile
+You may still **record** new signals into `design-memory` as observations after the fact (see below) — that's watching, not steering.
 
 ## Integration
 
 - **Called by:** `design-discovery` (to set visual direction), `design-strategy` (for positioning references), `using-designpowers` (when user requests inspiration)
-- **Calls:** `design-memory` (to read taste constraints and record new signals)
+- **Calls:** `design-memory` (only to record new observations after the fact — never to read constraints that steer the scouting)
 - **Hands off to:** `design-lead` (with curated references as visual brief), `design-strategist` (with emotional/UX references)
 - **Pairs with:** `design-memory`, `design-debate` (inspiration can trigger a debate on direction)
 - **Updated by:** User reactions — every "love it" or "not for me" is a taste data point
@@ -163,5 +161,5 @@ If a taste profile exists (`design-memory`):
 | Only looking at competitors | Competitors solve the same problem the same way. Cross-domain references unlock fresh approaches |
 | Showing inspiration that violates accessibility | A beautiful reference with 2:1 contrast ratios is not inspiration — it's a cautionary tale. Flag accessibility issues in references |
 | Copying instead of being inspired | Inspiration means "take the quality, not the pixels." Always specify what to take and what to leave |
-| Ignoring the taste profile | If the user dislikes gradients and you show gradient-heavy references, you're wasting their time |
+| Ignoring this project's stated direction | If the user has said (now) they want a calm, gradient-free look, showing gradient-heavy references wastes their time. Drive from `design-taste`, not from the cross-project record |
 | Presenting without "what to take" | A reference without a clear lesson is decoration. Every reference needs a reason |

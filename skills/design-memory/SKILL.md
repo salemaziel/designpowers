@@ -1,182 +1,161 @@
 ---
 name: design-memory
-description: Use when starting a new project or when taste decisions are made — accumulates the user's aesthetic preferences, recurring patterns, and design instincts across projects so each new project starts with what the system already knows about their taste
+description: Use at project start and completion to OBSERVE and record how the user designs — the decisions they make, the styles they reach for, their habits and inclinations across projects. This is a descriptive record (a mirror), NOT a controller — it is never fed back to steer the work. Per-project direction comes from design-taste and a DESIGN.md; design-memory only watches and reflects, surfaced to the user as a report out of curiosity
 ---
 
 # Design Memory
 
-Design memory is the system's understanding of your taste. Not a style guide — a living record of the aesthetic instincts, recurring preferences, and design convictions you've demonstrated across projects. Every project teaches the system something about how you see. This skill captures those lessons so you stop repeating yourself.
+Design memory is an **observational record of how you design** — the decisions you make, the styles you reach for, the habits and inclinations that show up across projects. It is a mirror, not a controller. It notices what you do and reflects it back to you out of curiosity. It does **not** steer future work.
+
+## The one rule that defines this skill
+
+**Design memory is descriptive, never prescriptive.** It records what you did; it is *not* applied to drive new projects. The current project's direction comes from what you tell the team now (`design-taste`) and from any brand spec you provide (`design-md` / `DESIGN.md`) — never from this record. Observation that never feeds back into the work cannot mis-steer it, which is exactly why a record built across many different clients stays safe and honest: it's a journal, not a set of orders.
+
+If you ever want to *act* on an observation, that's your call to make explicitly in the moment — the system will not quietly apply your past decisions to a new client's project.
 
 ## Welcome Gate
 
-**BEFORE loading or updating design memory, check whether the Designpowers welcome sequence has been shown this session.** If the user has not yet seen the welcome (the bird, the greeting, and the walkthrough offer), you MUST invoke the `using-designpowers` skill FIRST and complete the welcome sequence before returning here. The bird must appear before any work begins. No exceptions.
+**BEFORE reading or updating design memory, check whether the Designpowers welcome sequence has been shown this session.** If the user has not yet seen the welcome (the bird, the greeting, and the walkthrough offer), you MUST invoke the `using-designpowers` skill FIRST and complete the welcome sequence before returning here. The bird must appear before any work begins. No exceptions.
 
 ## When to Use
 
-- At the start of any new project — load existing taste profile before discovery begins
-- After any user override or correction — these are the strongest taste signals
-- After design-critic or design-lead make decisions the user explicitly approves
-- At project completion — extract and consolidate taste learnings
-- When the user says something like "I always want..." or "I never want..." or "that's not me"
+- **At project completion** — observe the project's decisions and add them to the record
+- **When the user asks** "how do I design?", "what are my habits?", "what's my style?" — produce the report
+- **When the user makes a notably characteristic choice** — note it as an observation
+- It is **not** loaded to constrain a new project. (Loading at project start is only to *show the user their report if they want it*, not to feed preferences into the pipeline.)
 
-## The Taste Profile
+## The Record (`taste-profile.md`)
 
-The taste profile lives at `.designpowers/taste-profile.md` in the user's home directory (cross-project) or in the project root (project-specific overrides). The home directory version is the canonical record. Project-specific overrides are temporary and scoped.
+Lives at `~/.designpowers/taste-profile.md` (cross-project). It is a journal of observations about how the user works — not a rulebook. Every entry is phrased as *something observed*, with evidence, never as an instruction for future work.
 
 ### Structure
 
 ```markdown
-# Taste Profile
+# Design Record — How [user] Designs
+_An observational journal. Descriptive, not prescriptive — this is never applied to steer projects._
 
-_Last updated: [date] from project [project name]_
-_Projects contributed: [count]_
+_Last updated: [date] after project [project name]_
+_Projects observed: [count]_
 
-## Aesthetic Identity
+## Recurring Decisions
+Choices that have shown up more than once — noticed, not mandated.
 
-### Visual Language
-- **Palette tendency:** [e.g., "muted earth tones, avoids saturated primaries"]
-- **Typography stance:** [e.g., "geometric sans for UI, serif for editorial — never decorative faces"]
-- **Density preference:** [e.g., "generous whitespace, never cramped — willing to scroll"]
-- **Shape language:** [e.g., "soft radius (8-12px), never fully rounded, never sharp"]
-- **Imagery style:** [e.g., "photographic over illustrative, desaturated, real people not stock"]
+| Observation | Times seen | Evidence |
+|-------------|-----------|----------|
+| [e.g., "Reaches for generous whitespace"] | 3 projects | A, C, D — chose it unprompted |
+| [e.g., "Decides colour last, after structure"] | 2 projects | Sequence in B, D |
 
-### Interaction Style
-- **Animation philosophy:** [e.g., "purposeful and subtle — no delight animations"]
-- **Feedback approach:** [e.g., "immediate, quiet confirmation — no modals for success"]
-- **Navigation preference:** [e.g., "flat structures, avoids deep nesting"]
-- **Error handling tone:** [e.g., "direct and helpful, no humour in errors"]
+## Style & Habits
+How the user tends to work and decide (not what to impose).
 
-### Content Voice
-- **Tone range:** [e.g., "professional but warm — never corporate, never casual"]
-- **Formality level:** [e.g., "uses contractions, avoids jargon, addresses user as 'you'"]
-- **Vocabulary stance:** [e.g., "plain language advocate — reading level grade 8 or below"]
+- **Visual leanings:** [e.g., "warm neutrals show up often; rarely picks saturated primaries"]
+- **Process habits:** [e.g., "subtracts before adding — overrides usually remove an element"]
+- **Decision style:** [e.g., "settles type and spacing before touching colour"]
+- **Content voice tendencies:** [e.g., "consistently plain language, contractions, grade ~7"]
 
-## Strong Opinions
+## Inclinations & Curiosities
+Softer, single-occurrence or emerging things worth noticing — explicitly uncertain.
 
-Decisions the user has made repeatedly or emphatically. These are near-certain for future projects.
+| Noticed | Where | Note |
+|---------|-------|------|
+| [e.g., "tried a serif display once and kept it"] | Project D | one occurrence, may not be a pattern |
 
-| Opinion | Strength | Evidence |
-|---------|----------|----------|
-| [e.g., "No hamburger menus on desktop"] | Strong (3 projects) | Overrode design-lead in Project A, Project C. Stated preference in Project B |
-| [e.g., "Dark mode must be true dark, not grey"] | Strong (2 projects + explicit statement) | User said "I never want grey dark mode" in Project B |
-| ... | ... | ... |
+## Things the user has moved away from
+Choices they've reversed or corrected — observed, not a ban.
 
-## Soft Patterns
-
-Tendencies that have appeared but are not yet confirmed as strong opinions. These are suggestions, not constraints.
-
-| Pattern | Occurrences | Context |
-|---------|-------------|---------|
-| [e.g., "Tends to prefer left-aligned over centered headings"] | 2 projects | Approved left-aligned in A, didn't comment in B |
-| ... | ... | ... |
-
-## Anti-Patterns
-
-Things the user has explicitly rejected or corrected away from.
-
-| Anti-Pattern | Evidence |
-|--------------|----------|
-| [e.g., "Gradient backgrounds"] | Rejected in Project A, replaced in Project B |
-| [e.g., "Skeleton loading screens"] | "Just use a spinner" — Project C |
-| ... | ... |
+| Observation | Evidence |
+|-------------|----------|
+| [e.g., "removed gradient backgrounds twice"] | A, B |
 
 ## Project History
-
-| Project | Date | Key Taste Decisions | New Learnings |
-|---------|------|--------------------|-|
-| [name] | [date] | [2-3 key decisions] | [what we learned about taste] |
-| ... | ... | ... | ... |
+| Project | Date | What was decided | What it suggested about how they work |
+|---------|------|------------------|----------------------------------------|
+| [name] | [date] | [key decisions] | [the habit/inclination it revealed] |
 ```
 
 ## Process
 
-### Loading Memory (Start of Project)
+### Observing (during and at end of a project)
 
-1. **Check for existing taste profile** at `~/.designpowers/taste-profile.md`
-2. If it exists, read it and present a summary to the user:
-   > "Based on previous projects, I know you tend toward [key patterns]. Any of these no longer true?"
-3. Pass strong opinions to **design-lead** and **design-strategist** as constraints — they should not propose work that contradicts strong opinions unless they explicitly flag why
-4. Pass soft patterns as suggestions — agents can reference them but are not bound by them
-5. Pass anti-patterns as exclusions — agents should avoid these unless the user explicitly asks for them
+Watch for **signals about how the user decides** — and record them as observations, with evidence:
 
-### Capturing Signals (During Project)
+| Signal | What it tells you |
+|--------|-------------------|
+| **User override** | A strong signal of an inclination — note *what* they changed and *to what* |
+| **Explicit statement** ("I always…", "that's not me") | The user naming their own habit — record their words |
+| **Emphatic approval** | A choice that resonated — worth noting |
+| **Correction** ("no, more like…") | A direction they lean away from |
+| **Silent approval** | Weak — don't record until it recurs |
 
-Listen for taste signals throughout the workflow:
+When you notice a signal:
+1. Phrase it as an **observation** ("reaches for X", "tends to decide Y last"), never a rule ("always use X").
+2. Check whether it reinforces an existing observation (increase the count / add evidence) or is new (add it under the right section).
+3. If it *contradicts* an earlier observation, don't agonise — just note both; people change, and the record is a journal, not a contract.
 
-| Signal Type | Strength | Example |
-|-------------|----------|---------|
-| **User override** | Strongest | User changes colour the design-lead chose |
-| **Explicit statement** | Strong | "I always want visible focus indicators" |
-| **Emphatic approval** | Moderate | "Yes! That's exactly right" |
-| **Silent approval** | Weak | User does not comment on a decision (do not record as preference until pattern repeats) |
-| **Correction** | Strong (negative) | "No, not like that — more like..." |
+### Consolidating (end of project)
 
-When a taste signal is detected:
+When a project completes:
+1. Review the decisions in `design-state.md` and the user's overrides.
+2. Add observations to the record, with evidence and project attribution.
+3. **Keep it to how the user works, not what this client needed.** A client's required brand colour is *that client's* taste (it lives in their `DESIGN.md`) — it is **not** an observation about the user. Only record things that reflect *the user's own way of deciding*, the kind that would still be true with a different client.
+4. Offer the report: "Want to see what this project added to your design record?"
 
-1. Classify it (strong opinion, soft pattern, or anti-pattern)
-2. Check if it reinforces or contradicts an existing entry
-3. If new: add to appropriate section
-4. If reinforcing: increase strength / add evidence
-5. If contradicting: flag to user — "You preferred X in the last project but chose Y this time. Has your preference changed?"
+## The Report
 
-### Consolidating (End of Project)
+The primary way the user experiences design memory is as a **report they read out of curiosity** — "here's how you design." Generate it from the record by synthesising *across* observations, not just listing them:
 
-When a project completes (after verification-before-shipping):
+```markdown
+# How You Design
+_Observed across [N] projects · descriptive, not applied_
 
-1. Review all decisions logged in `design-state.md`
-2. Review all user overrides from the handoff chain
-3. Extract new taste learnings
-4. Update the taste profile:
-   - Promote repeated soft patterns to strong opinions
-   - Add new soft patterns from single-occurrence decisions
-   - Add new anti-patterns from rejections
-   - Update project history
-5. Show the user what was learned:
-   > "From this project, I learned: [new learnings]. Your taste profile now has [X] strong opinions and [Y] soft patterns."
+## In one line
+[The sharpest honest characterisation — e.g. "You're a subtractor who trusts whitespace and decides colour last."]
 
-## Integration With Agents
+## How you tend to decide
+[3-5 observations about process and decision-making, each with evidence.]
 
-### How Agents Use Memory
+## What you reach for
+[Recurring stylistic choices, framed as tendencies, with counts.]
 
-| Agent | How they use the taste profile |
-|-------|-------------------------------|
-| **design-strategist** | References voice and content preferences when setting principles |
-| **design-lead** | Treats strong opinions as constraints, soft patterns as starting points |
-| **design-scout** | Filters competitive research through taste preferences — "you usually dislike X, but this competitor does it well because..." |
-| **motion-designer** | References animation philosophy — if the user prefers subtle, don't propose elaborate choreography |
-| **content-writer** | References tone, formality, and vocabulary preferences |
-| **design-builder** | References interaction style preferences for implementation decisions |
-| **design-critic** | Evaluates whether output matches known preferences — flags drift |
-| **accessibility-reviewer** | Cross-references any taste preferences that might conflict with accessibility |
+## What you've moved away from
+[Reversals/corrections, as observations.]
 
-### Taste vs. Accessibility
+## Curiosities & emerging things
+[Single-occurrence or uncertain signals — explicitly low-confidence.]
 
-If a taste preference conflicts with accessibility requirements, **accessibility always wins**. But flag it:
+## Where the record is thin
+[Honest note on what there isn't enough evidence to say yet.]
+```
 
-> "Your taste profile says 'no focus indicators on clean UI elements,' but WCAG requires visible focus. I'll ensure focus indicators are present but styled to match your minimal aesthetic."
+Rules for the report:
+1. **Synthesise, don't transcribe** — the value is patterns across entries, not a table dump.
+2. **Every claim cites evidence** — no evidence, no claim.
+3. **Describe, never prescribe** — "you tend to…" never "you should…" and never "so I'll apply this."
+4. **Be honest about confidence** — separate well-evidenced habits from one-off curiosities.
+5. **It's a mirror, offered with curiosity** — the goal is self-awareness, not a grade and not a directive.
 
-## Conflict Resolution
+## What design memory does NOT do
 
-When taste memory conflicts with a current project's needs:
+- It does **not** pass preferences to design-lead, design-strategist, or any agent as constraints.
+- It does **not** gate or steer the build. The pipeline runs from the brief, the personas, `design-taste` (your live direction for *this* project), and any `DESIGN.md`.
+- It does **not** override or even nudge project decisions. If a past habit is relevant, the *user* raises it; the system won't apply it silently.
 
-1. **Project context wins over historical preference** — if the brief demands something the user usually avoids, the brief wins
-2. **Flag the tension** — "Your taste profile prefers muted palettes, but this children's app brief calls for vibrant colour. Going with the brief — let me know if you want to adjust"
-3. **Never silently override taste** — always explain when and why a known preference is being set aside
+This is the deliberate design: by never feeding back, the record can accumulate across wildly different clients without ever contaminating a new project. Observation is safe precisely because it's inert.
 
 ## Integration
 
-- **Called by:** `using-designpowers` (at project start), `design-state` (at project end)
-- **Reads from:** `design-state.md`, handoff chain, user overrides
-- **Writes to:** `~/.designpowers/taste-profile.md`
-- **Informs:** All agents via constraints passed at dispatch time
-- **Pairs with:** `design-discovery`, `designpowers-critique`, `design-retrospective`
+- **Called by:** `using-designpowers` (may offer the report), `design-state`/`design-retrospective` (at project end, to add observations)
+- **Reads from:** `design-state.md`, handoff chain, user overrides — to *observe*, not to extract constraints
+- **Writes to:** `~/.designpowers/taste-profile.md` (the observational record)
+- **Does NOT inform:** the agents or the build — by design
+- **Distinct from:** `design-taste` (your live aesthetic *direction* for the current project, which IS applied) and `design-md` (the client's brand spec, which IS applied). Design memory only watches.
 
 ## Anti-Patterns
 
 | Pattern | Why It Fails |
 |---------|-------------|
-| Recording every decision as a taste preference | Most decisions are contextual, not taste. Only record decisions that reflect personal aesthetic judgement |
-| Treating soft patterns as constraints | Soft patterns are hypotheses. They need more evidence before becoming constraints |
-| Never updating the profile | Taste evolves. If a user contradicts a strong opinion, update it — don't cling to the old data |
-| Overriding project needs with taste | The brief and personas come first. Taste is a tiebreaker and a starting point, not a trump card |
-| Recording accessibility overrides as taste | If the user accepts an accessibility-driven change, that's compliance, not preference. Don't record "prefers visible focus indicators" just because they accepted a WCAG fix |
+| Feeding the record back into the build as constraints | This is the old prescriptive model. The record is descriptive — applying it silently is exactly the contamination we're avoiding |
+| Recording a client's brand requirement as the user's taste | A client's `DESIGN.md` is that client's, not the user's way of working. Only record portable observations about *how the user decides* |
+| Phrasing observations as rules ("always use X") | It's a journal, not a rulebook. "Reaches for X (3 projects)" is honest; "always use X" is a directive the system shouldn't issue |
+| Recording every decision | Most choices are contextual. Note the ones that reveal something about how the user works |
+| Treating the record as a grade | It's a mirror offered out of curiosity, not a scorecard |

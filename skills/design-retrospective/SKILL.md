@@ -1,6 +1,6 @@
 ---
 name: design-retrospective
-description: Use after shipping or completing a design project — structured reflection on what worked, what didn't, what taste decisions landed, and what to carry forward. Feeds learnings back into design-memory so the next project is sharper
+description: Use after shipping or completing a design project — structured reflection on what worked, what didn't, and what taste decisions landed. Adds observations to the design record (design-memory) about how the user designs — a descriptive journal, not preferences applied to future projects
 ---
 
 # Design Retrospective
@@ -45,7 +45,7 @@ Look for:
 - Choices the user explicitly praised
 - Patterns that emerged naturally and felt right
 - Accessibility approaches that enhanced rather than constrained the design
-- Moments where the taste profile accurately predicted the user's preference
+- Moments that revealed something characteristic about how the user designs (to note in the record — not to apply later)
 
 ### Step 3: Evaluate What Didn't Work
 
@@ -123,25 +123,24 @@ Review the Design Debt Register from `design-state.md`:
 
 ### Step 6: Taste Evolution
 
-Compare the taste profile at project start vs project end:
+Note what this project revealed about how the user designs, to add to the observational record. This is *describing* the user's habits, not setting rules for future work:
 
 ```markdown
-### Taste Evolution
+### What this project revealed (observations for the record)
 
-**New strong opinions formed:**
-- [Opinion] — from [evidence in this project]
+**Recurring decisions reinforced:**
+- [Observation] — now seen in [N] projects, per [evidence]
 
-**Soft patterns confirmed:**
-- [Pattern] — now promoted to strong opinion because [evidence]
+**New habits or inclinations noticed:**
+- [Observation] — first seen here, per [evidence]
 
-**Soft patterns rejected:**
-- [Pattern] — this project showed it was contextual, not a preference
+**Things the user moved away from:**
+- [Observation] — corrected/reversed because [reason]
 
-**New anti-patterns discovered:**
-- [Anti-pattern] — rejected because [reason]
+**Surprises:**
+- [What was characteristic or unexpected about how they decided] — e.g. chose [X] over [Y]
 
-**Taste surprises:**
-- [Unexpected preference] — the user surprised us by choosing [X] over [Y]
+_(All recorded as descriptions of how the user designs — never as preferences to apply to future work.)_
 ```
 
 ### Step 7: Carry-Forward Items
@@ -204,13 +203,13 @@ Compile everything into a single document:
 
 Save to: `[project-root]/design-retrospective.md`
 
-### Step 9: Update Design Memory
+### Step 9: Add to the Design Record
 
 After the retrospective is written:
 
-1. Invoke `design-memory` to consolidate taste learnings
-2. Pass the carry-forward items so they inform the taste profile
-3. Update project history in the taste profile
+1. Invoke `design-memory` to add this project's observations to the record
+2. Record them as descriptions of *how the user designs* (habits, inclinations), with evidence — never as preferences to apply to future work
+3. Update the project history in the record
 
 ### Step 10: Present to User
 
@@ -263,5 +262,5 @@ Show the retrospective to the user as a summary:
 | Skipping retrospective because the project "went fine" | Even smooth projects teach you something. "Why did this go well?" is as valuable as "why did this go wrong?" |
 | Blaming agents for wrong decisions | Agents are tools. If the output was wrong, the question is what context they were missing, not what they did wrong |
 | Only looking at what failed | Wins are data too. Understanding what worked is how you replicate it |
-| Not updating the taste profile | The retrospective is wasted if it doesn't feed forward. The whole point is making the next project better |
+| Not adding observations to the design record | Each project should leave the user a richer mirror of how they design. The record isn't applied to future work, but it's only honest if it's kept current |
 | Running retrospective in auto mode | Retrospectives need user reflection. Always run in direct mode with pauses for user input |

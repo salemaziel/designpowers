@@ -11,15 +11,15 @@ The standard Designpowers pipeline catches taste mismatches at critique — afte
 
 - During `design-builder` execution, at natural visual checkpoints
 - When the build involves subjective aesthetic decisions (colour, typography, spacing, tone)
-- When the taste profile has soft patterns but no strong opinions for this decision
-- When the project is new and the system has limited taste data for this user
+- When this project's taste direction (`design-taste`) is ambiguous on the decision at hand
+- When the project is new and there's little explicit direction yet for this decision
 - When the design-lead's direction was based on interpretation, not explicit user instruction
 
 ## Do Not Use When
 
 - The user is in auto mode and hasn't opted into taste checks
 - The build is purely structural (data models, API integration, routing)
-- The taste profile has strong opinions that already constrain this decision
+- This project's `design-taste` direction already settles this decision clearly
 - The user has explicitly said "just build it, I'll review at the end"
 
 ## Process
