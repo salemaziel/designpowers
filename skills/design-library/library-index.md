@@ -5,7 +5,7 @@ A browsable, offline snapshot of the [VoltAgent/awesome-design-md](https://githu
 - **Fetch URL for any entry:** `https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/design-md/<slug>/DESIGN.md`
 - **Preview URL (browser, for the human):** `https://getdesign.md/<slug>/design-md`
 - **Synced by:** `scripts/check-library-index.sh` (run weekly in CI) — if this snapshot drifts from upstream, that check fails.
-- **Snapshot:** 73 brands. The **live repo is authoritative** for actual fetches and for new additions — when pulling a file, resolve the slug against the live `design-md/` directory, not just this snapshot. Slugs are exact (note `runwayml`, `bmw-m`, `linear.app`, `mistral.ai`, `together.ai`, `opencode.ai`, `x.ai`, `cal`, `dell-1996`).
+- **Snapshot:** 74 brands. The **live repo is authoritative** for actual fetches and for new additions — when pulling a file, resolve the slug against the live `design-md/` directory, not just this snapshot. Slugs are exact (note `runwayml`, `bmw-m`, `linear.app`, `mistral.ai`, `together.ai`, `opencode.ai`, `x.ai`, `cal`, `dell-1996`).
 
 ## AI & LLM Platforms
 - **Claude** · `claude` · Warm terracotta accent, clean editorial layout
@@ -99,3 +99,4 @@ A browsable, offline snapshot of the [VoltAgent/awesome-design-md](https://githu
 
 ## Retro Web · Nostalgia
 - **Dell (1996)** · `dell-1996` · Catalog-era web: black page frame, color-block ribbon cards, chunky Helvetica-Black over Times Roman, hand-cut GIF stickers
+- **Nintendo (2001)** · `nintendo-2001` · Y2K console-hardware aesthetic — beveled periwinkle chrome plates, halftone carbon command bar, signal-orange wayfinding
